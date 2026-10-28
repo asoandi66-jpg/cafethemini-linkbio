@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <base target="_top">
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no">
+  <title>Cafe TheMini | #selalujadipilihan</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/lucide@latest"></script>
+  <style>
+    :root{--orange:#ff7a00;--orange-dark:#ea580c;--orange-pale:#fff7ed;--ink:#1e293b;--muted:#94a3b8;--line:#ffedd5}
+    *{box-sizing:border-box} body{margin:0;min-height:100vh;background:linear-gradient(135deg,#fffbeb,#fff7ed 55%,#ffedd5);font-family:'Plus Jakarta Sans',sans-serif;color:var(--ink);padding:0;display:flex;justify-content:center;align-items:flex-start}
+    .app{position:relative;width:100%;max-width:480px;min-height:100vh;background:#fff;overflow:hidden;box-shadow:0 18px 60px #7c2d1218;display:flex;flex-direction:column}
+    .cover{position:absolute;inset:0 0 auto;height:260px;background:linear-gradient(180deg,#fb923c,#ffedd5);overflow:hidden;pointer-events:none}.cover img{width:100%;height:100%;object-fit:cover;opacity:.35}.cover:after{content:'';position:absolute;inset:0;background:linear-gradient(180deg,#f97316a8,transparent)}
+    header{position:relative;z-index:1;text-align:center;padding:28px 22px 16px}.status{display:inline-flex;align-items:center;gap:7px;background:#ffffffd9;border:1px solid #fed7aa;border-radius:99px;padding:7px 12px;font-size:11px;font-weight:700;color:#c2410c;margin-bottom:16px}.dot{width:7px;height:7px;border-radius:50%;background:#10b981;box-shadow:0 0 0 4px #10b98120}
+    .avatar{width:96px;height:96px;padding:4px;border-radius:50%;margin:0 auto 12px;background:linear-gradient(135deg,#fbbf24,#f97316,#fb7185);box-shadow:0 8px 24px #f9731638}.avatar img{width:100%;height:100%;object-fit:cover;border:3px solid white;border-radius:50%;background:#fff}
+    h1{font-size:21px;line-height:1.2;margin:0;font-weight:800;letter-spacing:-.5px}.handle{margin:5px 0 0;color:#ea580c;font-size:12px;font-weight:700}.slogan{margin:9px auto 0;max-width:300px;font-size:12px;line-height:1.5;color:#64748b}
+    .quick{display:grid;grid-template-columns:1fr 1fr;gap:9px;margin-top:18px}.btn{display:flex;align-items:center;justify-content:center;gap:7px;text-decoration:none;border-radius:14px;padding:12px 9px;font-size:12px;font-weight:800;transition:transform .15s,background .15s;min-width:0}.btn:active,.link-card:active{transform:scale(.98)}.btn-wa{color:#fff;background:linear-gradient(100deg,#f97316,#ea580c);box-shadow:0 5px 14px #f9731629}.btn-ig{grid-column:1/-1;background:white;border:1px solid #fed7aa;color:#334155;padding:11px}.btn svg{width:17px;height:17px;flex-shrink:0}.btn span{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
+    main{position:relative;z-index:1;padding:0 18px 20px;display:flex;flex-direction:column;gap:22px;flex:1}.section-heading{display:flex;justify-content:space-between;align-items:center;gap:10px;margin-bottom:11px}.section-heading h2{margin:0;font-size:12px;font-weight:800;letter-spacing:.7px;text-transform:uppercase;display:flex;align-items:center;gap:8px}.bar{height:16px;width:4px;background:var(--orange);border-radius:9px}.pill{font-size:10px;font-weight:800;color:#c2410c;background:#ffedd5;border-radius:99px;padding:5px 9px;white-space:nowrap}
+    .menu-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:11px}.menu-card{border:1px solid #ffedd5;border-radius:17px;padding:9px;display:flex;flex-direction:column;min-width:0;background:white;box-shadow:0 3px 12px #7c2d1207}.menu-photo{height:118px;border-radius:12px;overflow:hidden;background:#fff7ed;margin-bottom:9px}.menu-photo img{width:100%;height:100%;object-fit:cover}.menu-card h3{font-size:12px;margin:0;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.menu-card p{font-size:10px;color:#94a3b8;margin:5px 0;line-height:1.45}.price{font-size:12px;font-weight:800;color:#ea580c;margin-top:auto}.order{display:flex;justify-content:center;align-items:center;gap:5px;text-decoration:none;color:#c2410c;background:#fff7ed;border-radius:10px;padding:8px 5px;font-size:11px;font-weight:800;margin-top:10px}.order svg{width:13px;height:13px}
+    .full-menu{border:1px solid #fed7aa;border-radius:18px;padding:10px;background:#fffaf5;box-shadow:0 5px 20px #7c2d1208}.full-menu a{display:block;text-decoration:none;color:inherit}.full-menu img{display:block;width:100%;max-height:480px;object-fit:contain;border-radius:11px;background:white}.full-placeholder{min-height:115px;border:1px dashed #fdba74;border-radius:12px;display:flex;flex-direction:column;align-items:center;justify-content:center;text-align:center;padding:18px;color:#c2410c;background:#fff}.full-placeholder svg{width:27px;height:27px;margin-bottom:8px}.full-placeholder strong{font-size:12px}.full-placeholder small{font-size:10px;color:#9a3412;margin-top:5px}
+    .links{display:flex;flex-direction:column;gap:10px}.link-card{display:flex;align-items:center;gap:12px;text-decoration:none;color:inherit;padding:12px;border:1px solid #ffedd5;border-radius:16px;background:#fff;box-shadow:0 3px 12px #7c2d1207;transition:transform .15s,background .15s}.link-card:hover{background:#fffaf5;border-color:#fdba74}.link-icon{width:44px;height:44px;flex-shrink:0;display:flex;align-items:center;justify-content:center;color:#fff;background:linear-gradient(135deg,#f97316,#f59e0b);border-radius:13px}.link-icon svg{width:21px;height:21px}.link-copy{min-width:0;flex:1}.link-copy strong{display:block;font-size:12px;font-weight:800;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.link-copy small{display:block;font-size:10px;color:#94a3b8;margin-top:4px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis}.arrow{width:30px;height:30px;flex-shrink:0;border-radius:50%;display:flex;align-items:center;justify-content:center;background:#fff7ed;color:#ea580c}.arrow svg{width:16px;height:16px}.empty{padding:24px 12px;text-align:center;color:#94a3b8;font-size:12px;border:1px dashed #fed7aa;border-radius:15px}
+    footer{text-align:center;padding:15px;border-top:1px solid #f1f5f9;font-size:10px;color:#94a3b8}.refresh{position:fixed;bottom:16px;right:max(14px,calc((100vw - 480px)/2 + 14px));width:39px;height:39px;border:1px solid #fed7aa;border-radius:50%;background:#fff;color:#ea580c;box-shadow:0 5px 18px #7c2d121a;display:none;align-items:center;justify-content:center;cursor:pointer}.refresh svg{width:17px;height:17px}.spin{animation:spin 1s linear infinite}@keyframes spin{to{transform:rotate(360deg)}}
+    .loading{padding:22px;text-align:center;color:#94a3b8;font-size:12px}
+    /* Layar pembuka saat data dan aset awal sedang dimuat */
+    .startup-loader{position:fixed;inset:0;z-index:9999;display:flex;align-items:center;justify-content:center;padding:24px;background:linear-gradient(145deg,#fffaf2 0%,#fff1df 52%,#ffe2bd 100%);opacity:1;visibility:visible;transition:opacity .45s ease,visibility .45s ease}
+    .startup-loader.is-hidden{opacity:0;visibility:hidden;pointer-events:none}
+    .loader-inner{display:flex;flex-direction:column;align-items:center;text-align:center;gap:17px;transform:translateY(-8px)}
+    .loader-logo-wrap{position:relative;width:116px;height:116px;display:flex;align-items:center;justify-content:center}
+    .loader-orbit{position:absolute;inset:0;border:3px solid #fed7aa;border-top-color:#f97316;border-right-color:#fb923c;border-radius:50%;animation:loaderOrbit 1.15s linear infinite}
+    .loader-orbit:after{content:'';position:absolute;top:7px;left:12px;width:10px;height:10px;border-radius:50%;background:#ea580c;box-shadow:0 0 0 5px #f9731622}
+    .loader-logo{width:82px;height:82px;object-fit:contain;border-radius:50%;background:#fff;padding:5px;box-shadow:0 7px 24px #9a341222;animation:logoPulse 1.7s ease-in-out infinite}
+    .loader-brand{font-size:20px;font-weight:800;letter-spacing:-.6px;color:#7c2d12}
+    .loader-tagline{margin-top:-12px;font-size:11px;font-weight:700;letter-spacing:1.5px;color:#ea580c}
+    .loader-message{font-size:12px;color:#9a3412}
+    .loader-dots{display:flex;gap:6px;align-items:center;height:12px}
+    .loader-dots span{width:7px;height:7px;border-radius:50%;background:#f97316;animation:dotBounce .8s ease-in-out infinite}
+    .loader-dots span:nth-child(2){animation-delay:.13s}.loader-dots span:nth-child(3){animation-delay:.26s}
+    @keyframes loaderOrbit{to{transform:rotate(360deg)}}@keyframes logoPulse{0%,100%{transform:scale(1)}50%{transform:scale(1.055)}}@keyframes dotBounce{0%,60%,100%{transform:translateY(0);opacity:.55}30%{transform:translateY(-6px);opacity:1}}
+    @media(prefers-reduced-motion:reduce){.loader-orbit,.loader-logo,.loader-dots span{animation:none}}
+    @media(min-width:600px){body{padding:18px 0}.app{min-height:calc(100vh - 36px);border-radius:30px;border:1px solid #ffedd5}.cover{border-radius:30px 30px 0 0}}
+  </style>
+</head>
+<body>
+<div class="startup-loader" id="startupLoader" role="status" aria-live="polite" aria-label="Memuat Cafe TheMini">
+  <div class="loader-inner">
+    <div class="loader-logo-wrap"><div class="loader-orbit"></div><img class="loader-logo" id="startupLogo" src="https://lh3.googleusercontent.com/aida-public/AB6AXuD6EDt8fu0T6uvjZ8DEBljDVKv1JqocuD-w2nBer0S_WyHFZmEtsf0RoopZdkfHOk_ONgw5UNVkMGwuOj0TCmlTM8KIdx1HsSnY-4wibpE4FW5iOmMHZXRa4Scm2XADaNqDewZ2tGCpTWaGIxhMUQ1EjX4YIX3XFvM7aKgkJ7lf856xhg-Lkuji8cEz9WiQohHP6DzfytF_x5JHpOL0ieFsqr9dY5txf0s3rAAa3aAANPA8lwMXftGS6GkxZGSgSiZ0Qqk" alt="Logo Cafe TheMini"></div>
+    <div class="loader-brand">Cafe TheMini</div>
+    <div class="loader-tagline">#selalujadipilihan</div>
+    <div class="loader-message">Menyiapkan halaman untuk Anda</div>
+    <div class="loader-dots" aria-hidden="true"><span></span><span></span><span></span></div>
+  </div>
+</div>
+<div class="app">
+  <div class="cover" id="coverBanner"></div>
+  <header>
+    <div class="status"><span class="dot"></span><span id="statusBuka">Online &amp; Siap Melayani</span></div>
+    <div class="avatar"><img id="profileLogo" alt="Logo Cafe TheMini" src=""></div>
+    <h1 id="namaBisnis">Cafe TheMini</h1>
+    <p class="handle" id="handle">@cafethemini</p>
+    <p class="slogan" id="slogan">#selalujadipilihan</p>
+    <div class="quick" id="quickActions">
+      <a class="btn btn-wa" id="wa1" href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i><span>WA Admin 1</span></a>
+      <a class="btn btn-wa" id="wa2" href="#" target="_blank" rel="noopener noreferrer"><i data-lucide="message-circle"></i><span>WA Admin 2</span></a>
+      <a class="btn btn-ig" id="instagram" href="https://instagram.com/cafethemini" target="_blank" rel="noopener noreferrer"><i data-lucide="instagram"></i><span>Kunjungi Instagram @cafethemini</span></a>
+    </div>
+  </header>
+  <main>
+    <!-- Foto full menu selalu tepat di bawah tombol Instagram dan sebelum tautan -->
+    <section id="fullMenuSection">
+      <div class="section-heading"><h2><span class="bar"></span><span id="judulFullMenu">Full Menu Cafe TheMini</span></h2></div>
+      <div class="full-menu" id="fullMenuContent"><div class="full-placeholder"><i data-lucide="image"></i><strong>Foto full menu belum diatur</strong><small>Isi fotoFullMenuUrl pada tab Pengaturan di Google Sheets.</small></div></div>
+    </section>
+    <section id="menuSection">
+      <div class="section-heading"><h2><span class="bar"></span>Katalog Menu Pilihan</h2><span class="pill" id="menuCount">0 Menu</span></div>
+      <div class="menu-grid" id="menuContainer"><div class="loading">Memuat katalog menu…</div></div>
+    </section>
+    <section id="linksSection">
+      <div class="section-heading"><h2><span class="bar"></span>Tautan Pilihan</h2><span class="pill" id="linkCount">0 Tautan</span></div>
+      <div class="links" id="linksContainer"><div class="loading">Memuat tautan…</div></div>
+    </section>
+  </main>
+  <footer>© <span id="footerName">Cafe TheMini</span> · est. 2018</footer>
+</div>
+<button class="refresh" id="refreshButton" aria-label="Muat ulang data" title="Muat ulang data"><i data-lucide="refresh-cw" id="refreshIcon"></i></button>
+<script>
+  const $ = id => document.getElementById(id);
+  function safeUrl(value) {
+    const v = String(value || '').trim();
+    if (!v) return '';
+    try {
+      const u = new URL(v, window.location.href);
+      if (!['http:', 'https:'].includes(u.protocol)) return '';
+
+      // Ubah link berbagi Google Drive menjadi URL thumbnail yang dapat dipakai di <img>.
+      if (u.hostname === 'drive.google.com' || u.hostname === 'docs.google.com') {
+        let id = '';
+        const pathMatch = u.pathname.match(/\/file\/d\/([a-zA-Z0-9_-]+)/);
+        if (pathMatch) id = pathMatch[1];
+        if (!id) id = u.searchParams.get('id') || '';
+        if (id) return 'https://drive.google.com/thumbnail?id=' + encodeURIComponent(id) + '&sz=w2000';
+      }
+      return u.href;
+    } catch (e) { return ''; }
+  }
+  function setText(id, value) { $(id).textContent = value == null ? '' : String(value); }
+  function isEnabled(value) {
+    if (value === undefined || value === null || String(value).trim() === '') return true;
+    return ['true', '1', 'ya', 'aktif', 'tampilkan', 'on'].includes(String(value).trim().toLowerCase());
+  }
+  function setImage(id, url, alt) {
+    const el = $(id);
+    const defaultLogo = 'https://lh3.googleusercontent.com/aida-public/AB6AXuD6EDt8fu0T6uvjZ8DEBljDVKv1JqocuD-w2nBer0S_WyHFZmEtsf0RoopZdkfHOk_ONgw5UNVkMGwuOj0TCmlTM8KIdx1HsSnY-4wibpE4FW5iOmMHZXRa4Scm2XADaNqDewZ2tGCpTWaGIxhMUQ1EjX4YIX3XFvM7aKgkJ7lf856xhg-Lkuji8cEz9WiQohHP6DzfytF_x5JHpOL0ieFsqr9dY5txf0s3rAAa3aAANPA8lwMXftGS6GkxZGSgSiZ0Qqk';
+    const safe = safeUrl(url) || (id === 'profileLogo' ? defaultLogo : '');
+    if (safe) { el.src = safe; el.alt = alt || ''; el.style.display = ''; }
+    else { el.removeAttribute('src'); el.style.display = 'none'; }
+  }
+  function waUrl(number, message) {
+    let n = String(number || '').replace(/\D/g, '');
+    if (!n) return '';
+    if (n.startsWith('0')) n = '62' + n.slice(1);
+    return 'https://wa.me/' + n + '?text=' + encodeURIComponent(message || 'Halo, saya mau pesan menu Cafe TheMini');
+  }
+  function iconFor(value) {
+    const v = String(value || '').toLowerCase().trim();
+    const map = {whatsapp:'message-circle',wa:'message-circle',instagram:'instagram',ig:'instagram',youtube:'youtube',yt:'youtube',store:'shopping-bag',toko:'shopping-bag',shopee:'shopping-bag',tokopedia:'shopping-bag',globe:'globe',web:'globe',website:'globe',maps:'map-pin',map:'map-pin',location:'map-pin',lokasi:'map-pin',mail:'mail',email:'mail',file:'file-text',pdf:'file-text',download:'download',users:'users',komunitas:'users',grup:'users',menu:'book-open',food:'utensils',gofood:'utensils',grabfood:'utensils'};
+    return map[v] || 'link-2';
+  }
+  function makeIcon(name, className) {
+    const i = document.createElement('i'); i.setAttribute('data-lucide', name || 'link-2'); if (className) i.className = className; return i;
+  }
+  function renderProfile(c) {
+    c = c || {};
+    setText('namaBisnis', c.namaBisnis || 'Cafe TheMini'); setText('footerName', c.namaBisnis || 'Cafe TheMini');
+    setText('statusBuka', c.statusBuka || 'Online & Siap Melayani');
+    setText('handle', '@' + String(c.instagramUsername || 'cafethemini').replace(/^@/, ''));
+    setText('slogan', c.slogan || '#selalujadipilihan');
+    setText('judulFullMenu', c.judulFullMenu || 'Full Menu Cafe TheMini');
+    // Pengaturan TRUE/FALSE dari sheet; jika kunci belum ada, tetap tampil seperti versi lama.
+    $('menuSection').style.display = isEnabled(c.tampilkanKatalogMenu) ? '' : 'none';
+    $('linksSection').style.display = isEnabled(c.tampilkanTautanPilihan) ? '' : 'none';
+    setImage('profileLogo', c.logoUrl, 'Logo ' + (c.namaBisnis || 'Cafe TheMini'));
+    const cover = $('coverBanner'); const coverUrl = safeUrl(c.sampulUrl);
+    cover.replaceChildren(); if (coverUrl) { const img = document.createElement('img'); img.src = coverUrl; img.alt = ''; cover.appendChild(img); }
+    const wa1 = $('wa1'), wa2 = $('wa2');
+    [[wa1,c.waAdmin1Nomor,c.waAdmin1Pesan,c.waAdmin1Label || 'WA Admin 1'],[wa2,c.waAdmin2Nomor,c.waAdmin2Pesan,c.waAdmin2Label || 'WA Admin 2']].forEach(([el,num,msg,label]) => {
+      const url = waUrl(num,msg); el.href = url || '#'; el.style.display = url ? 'flex' : 'none'; el.querySelector('span').textContent = label;
+    });
+    const ig = $('instagram'); const igUrl = safeUrl(c.instagramUrl || ('https://instagram.com/' + (c.instagramUsername || 'cafethemini')));
+    ig.href = igUrl || '#'; ig.querySelector('span').textContent = 'Kunjungi Instagram @' + String(c.instagramUsername || 'cafethemini').replace(/^@/, '');
+    const fullUrl = safeUrl(c.fotoFullMenuUrl), fullLink = safeUrl(c.fotoFullMenuLink);
+    const content = $('fullMenuContent'); content.replaceChildren();
+    if (fullUrl) {
+      const img = document.createElement('img'); img.src = fullUrl; img.alt = c.judulFullMenu || 'Full Menu Cafe TheMini'; img.loading = 'lazy';
+      img.onerror = function() {
+        content.replaceChildren();
+        const ph = document.createElement('div'); ph.className = 'full-placeholder'; ph.appendChild(makeIcon('image-off'));
+        const strong = document.createElement('strong'); strong.textContent = 'Foto full menu tidak dapat dimuat';
+        const small = document.createElement('small'); small.textContent = 'Pastikan file Drive disetel ke Siapa saja yang memiliki link — Pelihat, lalu periksa URL gambar.';
+        ph.append(strong, small); content.appendChild(ph); if (window.lucide) lucide.createIcons();
+      };
+      if (fullLink) { const a = document.createElement('a'); a.href = fullLink; a.target = '_blank'; a.rel = 'noopener noreferrer'; a.appendChild(img); content.appendChild(a); }
+      else content.appendChild(img);
+    } else {
+      const ph = document.createElement('div'); ph.className = 'full-placeholder'; ph.appendChild(makeIcon('image'));
+      const strong = document.createElement('strong'); strong.textContent = 'Foto full menu belum diatur';
+      const small = document.createElement('small'); small.textContent = 'Isi fotoFullMenuUrl pada tab Pengaturan di Google Sheets.';
+      ph.append(strong, small); content.appendChild(ph);
+    }
+  }
+  function renderMenus(items, config) {
+    const root = $('menuContainer'); root.replaceChildren(); const menus = Array.isArray(items) ? items : [];
+    setText('menuCount', menus.length + ' Menu');
+    if (!menus.length) { const empty = document.createElement('div'); empty.className='empty'; empty.style.gridColumn='1/-1'; empty.textContent='Belum ada menu aktif. Tambahkan menu pada tab MenuFoto di Google Sheets.'; root.appendChild(empty); return; }
+    menus.forEach(item => {
+      const card = document.createElement('article'); card.className='menu-card';
+      if (safeUrl(item.fotoUrl)) { const photo = document.createElement('div'); photo.className='menu-photo'; const img=document.createElement('img'); img.src=safeUrl(item.fotoUrl); img.alt=item.nama || 'Foto menu'; img.loading='lazy'; photo.appendChild(img); card.appendChild(photo); }
+      const name=document.createElement('h3'); name.textContent=item.nama || 'Menu'; card.appendChild(name);
+      if (item.deskripsi) { const desc=document.createElement('p'); desc.textContent=item.deskripsi; card.appendChild(desc); }
+      if (item.harga) { const price=document.createElement('div'); price.className='price'; price.textContent=item.harga; card.appendChild(price); }
+      const number = config && config.waAdmin1Nomor; const message = 'Halo, saya mau pesan ' + (item.nama || 'menu') + ' di Cafe TheMini'; const orderUrl=waUrl(number,message);
+      if (orderUrl) { const order=document.createElement('a'); order.className='order'; order.href=orderUrl; order.target='_blank'; order.rel='noopener noreferrer'; order.append(makeIcon('message-circle'),document.createTextNode('Pesan')); card.appendChild(order); }
+      root.appendChild(card);
+    });
+  }
+  function renderLinks(items) {
+    const root = $('linksContainer'); root.replaceChildren(); const links = Array.isArray(items) ? items : [];
+    setText('linkCount', links.length + ' Tautan');
+    if (!links.length) { const empty=document.createElement('div'); empty.className='empty'; empty.textContent='Belum ada tautan aktif. Tambahkan baris pada tab Tautan di Google Sheets.'; root.appendChild(empty); return; }
+    links.forEach(item => {
+      const url=safeUrl(item.url); if (!url || !item.judul) return;
+      const a=document.createElement('a'); a.className='link-card'; a.href=url; a.target='_blank'; a.rel='noopener noreferrer';
+      const ico=document.createElement('div'); ico.className='link-icon'; ico.appendChild(makeIcon(iconFor(item.icon)));
+      const copy=document.createElement('div'); copy.className='link-copy'; const title=document.createElement('strong'); title.textContent=item.judul; copy.appendChild(title);
+      const subtitle=String(item.subjudul || '').trim(); if (subtitle) { const small=document.createElement('small'); small.textContent=subtitle; copy.appendChild(small); }
+      const arrow=document.createElement('div'); arrow.className='arrow'; arrow.appendChild(makeIcon('chevron-right'));
+      a.append(ico,copy,arrow); root.appendChild(a);
+    });
+    if (!root.children.length) { const empty=document.createElement('div'); empty.className='empty'; empty.textContent='Belum ada tautan aktif dengan URL yang valid.'; root.appendChild(empty); }
+  }
+  let startupFinished = false;
+  function finishStartup() {
+    if (startupFinished) return;
+    startupFinished = true;
+    const loader = $('startupLoader');
+    if (loader) { loader.classList.add('is-hidden'); window.setTimeout(() => loader.remove(), 500); }
+  }
+  // Ganti nilai ini dengan URL Web App Apps Script yang berakhiran /exec.
+  // Backend harus menyediakan action=getData dan callback JSONP.
+  const APPS_SCRIPT_API_URL = 'https://script.google.com/macros/s/AKfycbzaAqujoqd43Nf-9C2XrQRUm-OjdgKFP7E2GORUd2wkuMTZja1-GmuDbH12mFHdMs-u/exec';
+
+  function showLoadError(message) {
+    $('linksContainer').textContent = message;
+    $('menuContainer').textContent = '';
+    finishStartup();
+  }
+
+  function fetchDataJsonp() {
+    return new Promise((resolve, reject) => {
+      if (!APPS_SCRIPT_API_URL || APPS_SCRIPT_API_URL.indexOf('PASTE_URL_') === 0) {
+        reject(new Error('URL Web App Apps Script belum diisi pada APPS_SCRIPT_API_URL.'));
+        return;
+      }
+
+      const callbackName = '__cafeTheMiniCallback_' +
+        Date.now() + '_' + Math.random().toString(36).slice(2);
+      const script = document.createElement('script');
+      const timeout = window.setTimeout(() => {
+        cleanup();
+        reject(new Error('Koneksi ke backend timeout. Periksa URL dan deployment Apps Script.'));
+      }, 18000);
+
+      function cleanup() {
+        window.clearTimeout(timeout);
+        if (script.parentNode) script.parentNode.removeChild(script);
+        try { delete window[callbackName]; } catch (e) { window[callbackName] = undefined; }
+      }
+
+      window[callbackName] = function(data) {
+        cleanup();
+        resolve(data);
+      };
+
+      script.onerror = function() {
+        cleanup();
+        reject(new Error('Backend tidak dapat diakses. Periksa URL Web App dan izin aksesnya.'));
+      };
+
+      const separator = APPS_SCRIPT_API_URL.indexOf('?') >= 0 ? '&' : '?';
+      script.src = APPS_SCRIPT_API_URL + separator +
+        'action=getData&callback=' + encodeURIComponent(callbackName) +
+        '&_=' + Date.now();
+      script.async = true;
+      document.head.appendChild(script);
+    });
+  }
+
+  // Utamakan jalur resmi HTML Service Apps Script. JSONP dipakai sebagai cadangan
+  // agar halaman tetap kompatibel bila dibuka dari konteks yang tidak menyediakan
+  // google.script.run.
+  function fetchData() {
+    return new Promise((resolve, reject) => {
+      let settled = false;
+      let fallbackStarted = false;
+
+      function finish(callback, value) {
+        if (settled) return;
+        settled = true;
+        window.clearTimeout(bridgeTimeout);
+        callback(value);
+      }
+
+      function useJsonpFallback() {
+        if (settled || fallbackStarted) return;
+        fallbackStarted = true;
+        fetchDataJsonp()
+          .then(data => finish(resolve, data))
+          .catch(err => finish(reject, err));
+      }
+
+      const bridgeTimeout = window.setTimeout(useJsonpFallback, 5000);
+
+      try {
+        if (window.google && google.script && google.script.run) {
+          google.script.run
+            .withSuccessHandler(data => finish(resolve, data))
+            .withFailureHandler(useJsonpFallback)
+            .getAppFullData();
+        } else {
+          useJsonpFallback();
+        }
+      } catch (err) {
+        useJsonpFallback();
+      }
+    });
+  }
+
+  async function loadData() {
+    const button = $('refreshButton'), icon = $('refreshIcon');
+    button.style.display = 'flex';
+    icon.classList.add('spin');
+
+    try {
+      const data = await fetchData();
+      icon.classList.remove('spin');
+
+      if (!data || !data.success) {
+        showLoadError('Data gagal dimuat. Periksa nama sheet, isi data, dan izin deployment Apps Script.');
+        return;
+      }
+
+      renderProfile(data.config || {});
+      renderMenus(data.menuFoto || [], data.config || {});
+      renderLinks(data.links || []);
+      if (window.lucide) lucide.createIcons();
+      requestAnimationFrame(() => requestAnimationFrame(finishStartup));
+    } catch (err) {
+      icon.classList.remove('spin');
+      showLoadError('Gagal memuat data: ' + (err && err.message ? err.message : 'kesalahan tidak diketahui'));
+    }
+  }
+  $('refreshButton').addEventListener('click', loadData);
+  document.addEventListener('DOMContentLoaded', function(){ if (window.lucide) lucide.createIcons(); loadData(); });
+</script>
+</body>
+</html>
